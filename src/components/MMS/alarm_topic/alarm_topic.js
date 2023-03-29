@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { OK, server, key } from "../../../constance/constance";
 import { httpClient } from "../../../utils/HttpClient";
+import CSVReader from 'react-csv-reader'
 
 class Alarm_topic extends Component {
 
@@ -19,6 +20,10 @@ class Alarm_topic extends Component {
 
       display_table: "flex",
       display_edit: "none",
+
+      csv_data: "",
+      uploaded: "",
+      progress: 0,
     }
   }
 
@@ -31,6 +36,7 @@ class Alarm_topic extends Component {
       this.props.history.push("/home");
     }
   }
+
 
   mc_list = async () => {
     let data_mc = await httpClient.post(server.master_list_mc)
@@ -152,11 +158,38 @@ class Alarm_topic extends Component {
         showConfirmButton: false,
         timer: 2000,
       });
-
     }
+    window.location.replace("../alarm_topic");
 
   }
 
+  inputCSv = async () => {
+    for (let index = 1; index <= this.state.csv_data.length - 1; index++) {
+      if (this.state.csv_data[index][0] === "") {
+        break
+      } else {
+        let input = await httpClient.post(
+          server.master_upload + "/" + this.state.csv_data[index][0] + "/" + this.state.csv_data[index][1] + "/" + this.state.csv_data[index][2]
+        );
+        await this.setState({ uploaded: this.state.uploaded + 1 });
+        await this.setState({
+          progress:
+            (100 * this.state.uploaded) / (this.state.csv_data.length - 2),
+          // Math.round((100 * this.state.uploaded) / (this.state.csv_data.length - 2)),
+        });
+      }
+    }
+    if (this.state.progress >= 100) {
+      await Swal.fire({
+        icon: "success",
+        title: "Upload plan Successed",
+        // text: { APP_TITLE }.APP_TITLE,
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      await window.location.reload(false);
+    }
+  }
 
   render() {
     return (
@@ -176,10 +209,38 @@ class Alarm_topic extends Component {
                   </div>
                   <div className="col-md-12">
                     <div className="card-body">
+                      {/* input master topic csv  */}
                       <div className="row">
                         <div className="col-md-1">
+                          <CSVReader
+                            onFileLoaded={(data, fileInfo) =>
+                              this.setState({ csv_data: data })
+                            }
+                          />
 
+                        </div>
+                        <div className="col-md-2"></div>
+                        <button onClick={async (e) => {
+                          await e.preventDefault();
+                          this.inputCSv();
+                        }}
 
+                          className="btn btn-primary float-right">
+                          Upload
+                        </button>
+
+                      </div>
+                      <br />
+                      <div className="row">
+                        {/* {this.state.progress} % */}
+                        <div className="progress" style={{ width: "100%" }}>
+                          <div
+                            className="progress-bar bg-primary progress-bar-striped"
+                            role="progressbar"
+                            style={{
+                              width: this.state.progress + "%",
+                            }}
+                          ></div>
                         </div>
                       </div>
                     </div>

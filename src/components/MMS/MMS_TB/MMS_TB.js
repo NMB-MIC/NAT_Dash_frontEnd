@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 
 class MMS_TB extends Component {
 
-
   constructor(props) {
     super(props);
 

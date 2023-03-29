@@ -217,4 +217,5 @@ export const server = {
   master_get_topic: `master_topic/get_topic_list`, 
   master_edit_respon: `master_topic/edit_respon`, 
   master_update_respon: `master_topic/update_respon`, 
+  master_upload: `master_topic/upload`,
 }
