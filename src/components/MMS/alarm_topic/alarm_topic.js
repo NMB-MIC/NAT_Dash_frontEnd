@@ -152,9 +152,9 @@ class Alarm_topic extends Component {
         showConfirmButton: false,
         timer: 2000,
       });
-     
+
     }
-  
+
   }
 
 
@@ -167,7 +167,26 @@ class Alarm_topic extends Component {
 
         </section>
         <div className="row">
-          <div className="card card-warning col-md-12" >
+          <div className="card col-md-12" >
+            <div className="card-body">
+              <div className="col-md-12">
+                <div className="card card-primary">
+                  <div className="card-header">
+                    <h3 className="card-title"> Input Master (CSV File) </h3>
+                  </div>
+                  <div className="col-md-12">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-md-1">
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="card-body">
               <div className="col-md-12">
                 <div className="card card-primary" style={{ display: this.state.display_table }}>
@@ -327,7 +346,7 @@ class Alarm_topic extends Component {
                                   await this.setState({
                                     display_table: "flex",
                                     display_edit: "none",
-            
+
                                   })
                                 }}
                                 type="submit" className="btn btn-success">
