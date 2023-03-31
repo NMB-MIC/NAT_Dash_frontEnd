@@ -17,7 +17,7 @@ class Sidemenu extends Component {
         <div className="os-size-auto-observer observed" style={{ height: 'calc(100% + 1px)', float: 'left' }}><div className="os-resize-observer" /></div>
         <div className="os-content-glue" style={{ margin: '0px -8px', width: 500, height: 750 }} />
         <div className="os-padding"><div className="os-viewport os-viewport-native-scrollbars-invisible" style={{ overflowY: 'scroll' }}>
-          <div className="os-content" style={{ padding: '0px 0px', height: '100%', width: '100%' }}>
+          <div className="os-content" style={{ padding: '0px 0px', height: 'auto', width: '100%' }}>
             <div className="form-inline">
 
             </div>
@@ -35,19 +35,85 @@ class Sidemenu extends Component {
                     </a>
                     <ul className="nav nav-treeview auto">
 
-                    <li className="nav-item">
+                      <li className="nav-item">
                         <a href="/timeline_TB" className="nav-link">
                           <i className="far fa-circle nav-icon" />
                           <p> TURINING </p>
                         </a>
                       </li>
-                      <li className="nav-item">
-                        <a href="/timeline_AL" className="nav-link">
-                          <i className="far fa-circle nav-icon" />
-                          <p> AUTO LINE UP</p>
-                        </a>
-                      </li>
 
+                      <li className="nav-item menu-open">
+                        <a href="" className="nav-link">
+                          <i className="far fa-circle nav-icon" />
+                          <p>
+                            GRINDING
+                            <i className="fas fa-angle-left right" />
+                          </p>
+                        </a>
+                        <ul className="nav nav-treeview">
+                          <li className="nav-item">
+                            <a href="/Dash_Grinding" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p>IRH</p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/Dash_ORH" className="nav-link" >
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p>ORH</p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/Dash_IRB" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p>IRB</p>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </li>
+                      <li className="nav-item menu-open">
+                        <a href="" className="nav-link">
+                          <i className="far fa-circle nav-icon" />
+                          <p>
+                            ASSEMBLY
+                            <i className="fas fa-angle-left right" />
+                          </p>
+                        </a>
+                        <ul className="nav nav-treeview">
+                          <li className="nav-item">
+                            <a href="" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p>MBR</p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/timeline_ARP" className="nav-link" >
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p>ARP</p>
+                            </a>
+                          </li>
+                         <li className="nav-item">
+                            <a href="" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p> AUTO NOISE</p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/timeline_AL" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }}/>
+                              <p> AUTO LINE UP</p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/timeline_AVS" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p> AVS </p>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </li>
 
 
                     </ul>
@@ -104,7 +170,7 @@ class Sidemenu extends Component {
                         <a href="" className="nav-link">
                           <i className="far fa-circle nav-icon" />
                           <p>
-                            ASSEMBLY LINE
+                            ASSEMBLY
                             <i className="fas fa-angle-left right" />
                           </p>
                         </a>
@@ -250,7 +316,7 @@ class Sidemenu extends Component {
                         <a href="" className="nav-link">
                           <i className="far fa-circle nav-icon" />
                           <p>
-                            ASSEMBLY LINE
+                            ASSEMBLY
                             <i className="fas fa-angle-left right" />
                           </p>
                         </a>

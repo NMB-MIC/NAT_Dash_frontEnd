@@ -1,15 +1,14 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import { key, server } from "../../../constance/constance";
 import { httpClient } from "../../../utils/HttpClient";
 import ReactApexChart from "react-apexcharts";
 import * as moment from "moment";
-import Swal from "sweetalert2";
 
 
-
-class MMS_AL extends Component {
+class MMS_AVS extends Component {
+  
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       date_start: moment().add(-0, "days").format("YYYY-MM-DD"),
@@ -22,16 +21,17 @@ class MMS_AL extends Component {
       selected_machine: "",
       data_table: [],
 
-    };
-  };
-
-  componentDidMount = async () => {
-    let mc_list_data = await httpClient.post(server.AL_mc)
+      responsible: "All",
+    }
+  }; 
+   componentDidMount = async () => {
+    let mc_list_data = await httpClient.post(server.AVS_mc)
     await this.setState({
       list_machine: mc_list_data.data.result,
       selected_machine: mc_list_data.data.result[0].mc_no,
       //date_start: moment().add(-0, "days").format("2023-01-13"),
     })
+    console.log(mc_list_data.data.result);
 
     setTimeout(
       function () {
@@ -40,226 +40,27 @@ class MMS_AL extends Component {
       }.bind(this),
       200
     );
-
   }
+
   renderTableRow = () => {
     try {
-      // const { result, isFetching } = this.props.listuserReducer;
       if (this.state.list_machine !== null) {
         const myResult = this.state.list_machine;
         return myResult.map((item) => <option>{item.mc_no}</option>);
       }
-    } catch (error) { }
-  };
-
-  click_update = async () => {
-    await this.show_chart_timeline();
-    await this.timeline_status_log();
-    await this.alarm_time();
-    await this.stop_time();
-
-  };
-
-  show_chart_timeline = async () => {
-    // console.log(this.state.timeline_series);
-    try {
-      let mc_data = await httpClient.post(server.TIMELINE_AL, {
-        date: this.state.date_start,
-        machine: this.state.selected_machine,
-      });
-      console.log(mc_data.data.result);
-
-      var data_alarm = [];
-      var data_alarm_1 = [];
-      var data_alarm_LOADER = [];
-      var data_alarm_CAMERA = [];
-      var data_alarm_EJECT = [];
-      var data_alarm_ROBO = [];
-      var data_AIR_PRESSURE = [];
-      var data_X37_VACUUM_ALARM = [];
-      var data_ROBO_CYLINDER = [];
-      var data_robo_CYLINDER = [];
-      var data_X15 = [];
-      var WORK_EJECT = [], LOADER = [], CAMERA_f = [], CAMERA_R = [];
-      for (let index = 0; index < mc_data.data.result.length; index++) {
-        switch (mc_data.data.result[index].topic) {
-          case " PART FEEDER NO WORK":
-            data_alarm.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " LINE UP FULL WORK":
-            data_alarm_1.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " LOADER TROUBLE":
-            data_alarm_LOADER.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " CAMERA CHECK ALARM":
-            data_alarm_CAMERA.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " NG EJECT WORK FULL":
-            data_alarm_EJECT.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " ROBO CYLINDER TROUBLE":
-            data_alarm_ROBO.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " AIR PRESSURE ALARM":
-            data_AIR_PRESSURE.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " X37 VACUUM ALARM":
-            data_X37_VACUUM_ALARM.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " ROBO CYLINDER NOT HOME POSITION":
-            data_ROBO_CYLINDER.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " ROBO CYLINDER NOT READY [MENU MODE]":
-            data_robo_CYLINDER.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " X15 SHUTTER TROUBLE":
-            data_X15.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " WORK EJECT ABNORMAL":
-            WORK_EJECT.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " LOADER WORK FULL":
-            LOADER.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " CAMERA (F) CHECK CYCLE OVER":
-            CAMERA_f.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          case " CAMERA (R) CHECK CYCLE OVER":
-            CAMERA_R.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-          default:
-          // code block
-        }
-
-      }
-
-      await this.setState({
-        timeline_series: [
-          {
-            name: " PART FEEDER NO WORK",
-            data: data_alarm,
-          },
-          {
-            name: " LINE UP FULL WORK",
-            data: data_alarm_1,
-          },
-          {
-            name: " LOADER TROUBLE",
-            data: data_alarm_LOADER,
-          },
-          {
-            name: " CAMERA CHECK ALARM",
-            data: data_alarm_CAMERA,
-          },
-          {
-            name: " NG EJECT WORK FULL",
-            data: data_alarm_EJECT,
-          },
-          {
-            name: " ROBO CYLINDER TROUBLE",
-            data: data_alarm_ROBO,
-          },
-          {
-            name: " AIR PRESSURE ALARM",
-            data: data_AIR_PRESSURE,
-          },
-          {
-            name: " X37 VACUUM ALARM",
-            data: data_X37_VACUUM_ALARM,
-          },
-          {
-            name: " ROBO CYLINDER NOT HOME POSITION",
-            data: data_ROBO_CYLINDER,
-          },
-          {
-            name: " ROBO CYLINDER NOT READY [MENU MODE]",
-            data: data_robo_CYLINDER,
-          },
-          {
-            name: " X15 SHUTTER TROUBLE",
-            data: data_X15,
-          },
-          {
-            name: " WORK EJECT ABNORMAL",
-            data: WORK_EJECT,
-          }, 
-          {
-            name: " LOADER WORK FULL",
-            data: LOADER,
-          },
-          {
-            name: " CAMERA (F) CHECK CYCLE OVER",
-            data: CAMERA_f,
-          },
-          {
-            name: " CAMERA (R) CHECK CYCLE OVER",
-            data: CAMERA_R,
-          },
-    
-        ],
-        timeline_options: {
-          chart: {
-            height: 250,
-            type: "rangeBar",
-          },
-          plotOptions: {
-            bar: {
-              horizontal: true,
-              barHeight: "100%",
-              rangeBarGroupRows: true,
-            },
-          },
-          colors: ["#D7263D", "#008b02", "#57aeff", "#F46036", "#E2C044", "#ff08e2", "#0d1dfc"],
-          fill: {
-            type: "solid",
-          },
-          // labels: Data_time,
-          xaxis: {
-            type: "datetime",
-            labels: {
-              datetimeUTC: false,
-            },
-          },
-          yaxis: {
-            show: true,
-            title: {
-              style: {
-                fontSize: '10px',
-              }
-            }
-          },
-          legend: {
-            show : true ,
-            showForNullSeries:false,
-          },
-          tooltip: {
-            x: {
-              format: "HH:mm:ss",
-            },
-          },
-          // dataLabels: {
-          //   enabled: true,
-          // }
-        },
-      });
-
     } catch (error) {
-
-
+      console.log("------error------");
     }
-
   };
 
   timeline_status_log = async () => {
     // console.log(this.state.timeline_series);
     try {
-      let data_status_log = await httpClient.post(server.mc_status_log, {
+      let data_status_log = await httpClient.post(server.mc_status_log_AVS, {
         date: this.state.date_start,
         machine: this.state.selected_machine,
       });
       console.log(data_status_log.data.result);
-
       var data_STOP = [];
       var data_START = [];
       var data_ALARM = [];
@@ -290,9 +91,7 @@ class MMS_AL extends Component {
           default:
           // code block
         }
-
-      }
-
+      };
       await this.setState({
         timeline_series1: [
           {
@@ -324,6 +123,7 @@ class MMS_AL extends Component {
         ],
         timeline_options1: {
           chart: {
+            // background: '#EBEDEF',
             height: 350,
             width: 500,
             type: "rangeBar",
@@ -346,20 +146,9 @@ class MMS_AL extends Component {
               datetimeUTC: false,
             },
           },
-          // title: {
-          //   text: "Machine Running Status",
-          //   align: 'center',
-          //   style: {
-          //     fontSize: '25px',
-          //     fontWeight: 'bold',
-          //   }
-          // },
           yaxis: {
             show: true,
           },
-          // legend: {
-          //   position: "right",
-          // },
           tooltip: {
             x: {
               format: "HH:mm:ss",
@@ -368,16 +157,99 @@ class MMS_AL extends Component {
         },
       });
       // await console.log(this.state.timeline_series);
-
-    } catch (error) {
-
-
-    }
-
+    } catch (error) { }
   };
 
+  show_chart_timeline = async () => {
+    // console.log(this.state.timeline_series);
+    try {
+      let mc_data = await httpClient.post(server.TIMELINE_AVS, {
+        date: this.state.date_start,
+        machine: this.state.selected_machine,
+        responsible: this.state.responsible,
+      });
+      console.log(mc_data.data.result);
+      var M801 = []
+
+      for (let index = 0; index < mc_data.data.result.length; index++) {
+        switch (mc_data.data.result[index].topic) {
+          case "M801 AT-V501H ALARM":
+            M801.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          
+          default:
+          // code block
+        }
+
+      }
+
+      await this.setState({
+        timeline_series: [
+          {
+            name: "M801 AT-V501H ALARM",
+            data: M801,
+          },
+         
+        ],
+        timeline_options: {
+          chart: {
+            // background: '#EBEDEF',
+            height: 250,
+            type: "rangeBar",
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+              barHeight: "100%",
+              rangeBarGroupRows: true,
+            },
+          },
+          colors: ["#D7263D", "#008b02", "#57aeff", "#F46036", "#E2C044",
+            "#ff08e2", "#0d1dfc", "#94bafb", "#195529", "#c37e41", "#a7037e",
+            "#CCFF00", "#FFFF66", "#FFCC66", "#CC9999", "#CC6666",
+            "#FF6666", "#9900FF", "#66CC00", "#66CCCC", "#000033",
+            "#FF0066", "#C70039", "#FFC13D", "#45B39D", "#2962FF",
+            "#18FFFF", "#7CB342", "#EEFF41", "#FF5722", "#E91E63",
+            "#AB47BC", "#FF96C5", "#74737A", "#00C3AF", "#6C88C4",
+            "#FFA23A", "#FDBB9F", "#FF1744"
+          ],
+          fill: {
+            type: "solid",
+          },
+          // labels: Data_time,
+          xaxis: {
+            type: "datetime",
+            labels: {
+              datetimeUTC: false,
+            },
+          },
+          yaxis: {
+            show: true,
+            title: {
+              style: {
+                fontSize: '10px',
+              }
+            }
+          },
+          legend: {
+            show: true,
+            showForNullSeries: false,
+          },
+          tooltip: {
+            x: {
+              format: "HH:mm:ss",
+            },
+          },
+          // dataLabels: {
+          //   enabled: true,
+          // }
+        },
+      });
+
+    } catch (error) {}
+  };
   alarm_time = async () => {
-    let alarm = await httpClient.post(server.AlarmTopic_time, {
+    let alarm = await httpClient.post(server.AlarmTopic_time_AVS, {
       date: this.state.date_start,
       machine: this.state.selected_machine,
     })
@@ -398,7 +270,7 @@ class MMS_AL extends Component {
   }
 
   stop_time = async () => {
-    let stop_time = await httpClient.post(server.stop_time, {
+    let stop_time = await httpClient.post(server.stop_time_AVS, {
       date: this.state.date_start,
       machine: this.state.selected_machine,
     })
@@ -417,15 +289,14 @@ class MMS_AL extends Component {
       )
     }
   }
-  render() {
-    return (
-      <div className="content-wrapper">
 
-        <section className="content-header">
+  render() {
+    return  ( <div className="content-wrapper"> 
+         <section className="content-header">
           <div className="container-fluid">
             <h2 className="text-center" style={{ fontWeight: 'bold' }} > MACHINE MONITORING STATUS </h2>
           </div>
-        </section>
+        </section> 
         <div className="row">
           <div className="card card-warning col-md-12" >
 
@@ -455,11 +326,12 @@ class MMS_AL extends Component {
                     <h5>
                       <i class="fa fa-layer-group">&nbsp;</i>PROCESS
                     </h5>
-                    <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="ASSEMBLY" type="text" className="form-control" />
+                    <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AVS" type="text" className="form-control" />
                   </div>
+
                   <div className="col-md-2">
                     <h5>
-                      <i class="fa fa-layer-group">&nbsp;</i>MACHINE
+                      <i class="fa fa-memory">&nbsp;</i> MACHINE
                     </h5>
                     <select
                       value={this.state.selected_machine}
@@ -472,7 +344,6 @@ class MMS_AL extends Component {
                       {this.renderTableRow()}
                     </select>
                   </div>
-
                   <div className="col-md-3">
                     <h5><i class="fa fa-user">&nbsp;</i> RESPONSIBLE </h5>
                     <div className="input-group">
@@ -483,9 +354,11 @@ class MMS_AL extends Component {
                           this.setState({ responsible: e.target.value });
                         }}
                       >
+
                         <option>All</option>
-                        <option>MAINTENANCE</option>
-                        <option>PRODUCTION LINE</option>
+                        <option>MAINTENANCE TURNING</option>
+                        <option>LINE TURNING</option>
+
                       </select>
 
                     </div>
@@ -505,11 +378,18 @@ class MMS_AL extends Component {
                     </button>
                   </div>
                 </div>
-
+                {/* 
                 <div className="row" >
                   <div className="col-md-12">
                     <div className="col-md-12">
                       <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={230} />
+                    </div>
+                  </div>
+                </div> */}
+                <div className="row" >
+                  <div className="col-md-12">
+                    <div className="col-md-12">
+                      <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={300} />
                     </div>
                   </div>
                 </div>
@@ -517,7 +397,7 @@ class MMS_AL extends Component {
                   <div className="col-md-12">
 
                     <div className="col-md-12">
-                      <ReactApexChart options={this.state.timeline_options1} series={this.state.timeline_series1} type="rangeBar" height={230} />
+                      <ReactApexChart options={this.state.timeline_options1} series={this.state.timeline_series1} type="rangeBar" height={300} />
                     </div>
                   </div>
                 </div>
@@ -561,7 +441,7 @@ class MMS_AL extends Component {
                           fontSize: "20px",
                           color: "#FF0000",
                           fontWeight: "'bold'",
-                        }}> <i class="fas fa-exclamation-triangle"></i> 3 WORST STOP-ALARM </h3>
+                        }}><i class="fas fa-exclamation-triangle"></i> 3 WORST STOP-ALARM</h3>
                     </div>
                     <div className="card-body">
                       <table className="table table-bordered table-hover">
@@ -577,17 +457,15 @@ class MMS_AL extends Component {
                       </table>
                     </div>
                   </div>
-
                 </div>
-
               </div>
 
             </div>
           </div>
         </div>
-      </div>
+    </div>
     );
   }
 }
 
-export default MMS_AL;
+export default MMS_AVS;

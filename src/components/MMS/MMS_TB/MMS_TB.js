@@ -1,4 +1,4 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import { key, server } from "../../../constance/constance";
 import { httpClient } from "../../../utils/HttpClient";
 import ReactApexChart from "react-apexcharts";
@@ -70,7 +70,7 @@ class MMS_TB extends Component {
   timeline_status_log = async () => {
     // console.log(this.state.timeline_series);
     try {
-      let data_status_log = await httpClient.post(server.mc_status_log_AL, {
+      let data_status_log = await httpClient.post(server.mc_status_log_TB, {
         date: this.state.date_start,
         machine: this.state.selected_machine,
       });
@@ -163,21 +163,10 @@ class MMS_TB extends Component {
               datetimeUTC: false,
             },
           },
-
-          // title: {
-          //   text: "Machine Running Status",
-          //   align: 'center',
-          //   style: {
-          //     fontSize: '25px',
-          //     fontWeight: 'bold',
-          //   }
-          // },
           yaxis: {
             show: true,
           },
-          // legend: {
-          //   position: "right",
-          // },
+  
           tooltip: {
             x: {
               format: "HH:mm:ss",
@@ -186,12 +175,7 @@ class MMS_TB extends Component {
         },
       });
       // await console.log(this.state.timeline_series);
-
-    } catch (error) {
-
-
-    }
-
+    } catch (error) {}
   };
 
   // show_chart_timeline = async () => {
@@ -881,9 +865,10 @@ class MMS_TB extends Component {
               }
             }
           },
-          // legend: {
-          //   position: "right",
-          // },
+          legend: {
+            show : true ,
+            showForNullSeries:false,
+          },
           tooltip: {
             x: {
               format: "HH:mm:ss",
@@ -896,15 +881,11 @@ class MMS_TB extends Component {
       });
 
     } catch (error) {
-
-
     }
 
   };
-
-
   alarm_time = async () => {
-    let alarm = await httpClient.post(server.AlarmTopic_time_AL, {
+    let alarm = await httpClient.post(server.AlarmTopic_time_TB, {
       date: this.state.date_start,
       machine: this.state.selected_machine,
     })
@@ -926,7 +907,7 @@ class MMS_TB extends Component {
   }
 
   stop_time = async () => {
-    let stop_time = await httpClient.post(server.stop_time_AL, {
+    let stop_time = await httpClient.post(server.stop_time_TB, {
       date: this.state.date_start,
       machine: this.state.selected_machine,
     })

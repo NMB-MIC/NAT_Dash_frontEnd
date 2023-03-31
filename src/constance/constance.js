@@ -9,7 +9,7 @@ export const key = {
   TIME_LOGIN: "TIME_LOGIN",
   EDITTED_USER: "USER_EMP",
   USER_LV: "USER_LV",
-  TOPIC_ITEM : "TOPIC_ITEM",
+  TOPIC_ITEM: "TOPIC_ITEM",
 
 };
 
@@ -109,7 +109,7 @@ export const server = {
   ORH_DAILY_OUT_MC: 'ORH_result/daily_out_machine',
   MONTHLY_total_output_ORH: 'ORH_result/total_output_month',
   daily_CT_ORH: 'ORH_result/daily_CT',
-  CT_month_ORH : 'ORH_result/CT_month', 
+  CT_month_ORH: 'ORH_result/CT_month',
 
   //IRB dash
   list_machine_IRB: 'IRB_dash/list_machine',
@@ -132,8 +132,6 @@ export const server = {
   ORH_CT: `ORH_dash/find_ct`,
   ORH_ct_byHour: `ORH_dash/ct_byHour`,
   ORH_UTL: `ORH_dash/UTL`,
-
-
   // ARP  
   list_mc_ARP: 'ARP_result/list_machine_ARP',
   DAILY_TOTAL_ARP: 'ARP_result/daily_total',
@@ -144,7 +142,6 @@ export const server = {
   NG_ratio_ARP: 'ARP_result/NG_ratio',
   daily_CT_ARP: 'ARP_result/daily_CT',
   month_CT_ARP: 'ARP_result/CT_month',
-
   // AVS dash 
   AVS_OUTPUT: `AVS_dash/output_sum`,
   AVS_CT: `AVS_dash/find_ct`,
@@ -160,7 +157,6 @@ export const server = {
   MONTHLY_total_outputAVS: 'AVS_result/AVS_total_output_month',
   daily_CT_AVS: 'AVS_result/daily_CT',
   month_CT_AVS: 'AVS_result/CT_month',
-
   //AN dash
   AN_MC_LIST: `AN_dash/list_machine`,
   AN_OUTPUT: `AN_dash/output_sum`,
@@ -175,9 +171,8 @@ export const server = {
   daily_CT_Front_AN: 'AN_result/daily_CT_Front',
   daily_UTL_Front_AN: 'AN_result/daily_UTL_Front',
   daily_UTL_Rear_AN: 'AN_result/daily_UTL_Rear',
-  yield_AN_R: 'AN_result/yield_Rear', 
-  yield_AN_F : 'AN_result/yield_Front',
-
+  yield_AN_R: 'AN_result/yield_Rear',
+  yield_AN_F: 'AN_result/yield_Front',
   //AL dash 
   AL_MC_LIST: `AL_dash/list_machine`,
   AL_OUTPUT: `AL_dash/output_sum`,
@@ -190,32 +185,43 @@ export const server = {
   MONTHLY_total_outputAL: 'AL_result/AL_total_output_month',
   daily_CT_AL: 'AL_result/daily_CT',
   month_CT_AL: 'AL_result/CT_month',
-
   //ARP dash
   ARP_OUTPUT: `ARP_dash/output_sum`,
   ARP_CT: `ARP_dash/find_ct`,
   ARP_ct_byHour: `ARP_dash/ct_byHour`,
-
-  // AL
-  test_mc : `Timeline_AL/mc_list`,
+  // Auto line up
+  AL_mc: `Timeline_AL/mc_list`,
   TIMELINE_AL: `Timeline_AL/test1`,
-  //status : `test/mc_status`,
-  mc_status_log : `Timeline_AL/mc_status_log`,
-  AlarmTopic_time : `Timeline_AL/AlarmTopic_time`, 
-  stop_time : `Timeline_AL/Stop_time`, 
-
+  mc_status_log: `Timeline_AL/mc_status_log`,
+  AlarmTopic_time: `Timeline_AL/AlarmTopic_time`,
+  stop_time: `Timeline_AL/Stop_time`,
   // TB 
-  TB_mc : `Timeline_TB/mc_list`,
+  TB_mc: `Timeline_TB/mc_list`,
   TIMELINE_TB: `Timeline_TB/Timeline_TB`,
-  mc_status_log_AL : `Timeline_TB/mc_status_log`,
-  AlarmTopic_time_AL : `Timeline_TB/AlarmTopic_time`, 
-  stop_time_AL : `Timeline_TB/Stop_time`, 
+  mc_status_log_TB: `Timeline_TB/mc_status_log`,
+  AlarmTopic_time_TB: `Timeline_TB/AlarmTopic_time`,
+  stop_time_TB: `Timeline_TB/Stop_time`,
   TIMELINE_TB_test: `Timeline_TB/Timeline_TB_test`,
+  //ARP 
+  ARP_mc: `Timeline_ARP/mc_list`,
+  mc_status_log_ARP: `Timeline_ARP/mc_status_log`,
+  TIMELINE_ARP: `Timeline_ARP/Timeline_ARP`,
+  AlarmTopic_time_ARP: `Timeline_ARP/AlarmTopic_time`,
+  stop_time_ARP: `Timeline_ARP/Stop_time`,
+  // AVS
+  AVS_mc: `Timeline_AVS/mc_list`,
+  mc_status_log_AVS: `Timeline_AVS/mc_status_log`,
+  TIMELINE_AVS: `Timeline_AVS/Timeline_AVS`,
+  AlarmTopic_time_AVS: `Timeline_AVS/AlarmTopic_time`,
+  stop_time_AVS: `Timeline_AVS/Stop_time`,
+
   // master topic
-  master_list_mc: `master_topic/list_mc`, 
-  master_Topic_item: `master_topic/Add_item`, 
-  master_get_topic: `master_topic/get_topic_list`, 
-  master_edit_respon: `master_topic/edit_respon`, 
-  master_update_respon: `master_topic/update_respon`, 
+  master_list_mc: `master_topic/list_mc`,
+  master_Topic_item: `master_topic/Add_item`,
+  master_get_topic: `master_topic/get_topic_list`,
+  master_edit_respon: `master_topic/edit_respon`,
+  master_update_respon: `master_topic/update_respon`,
   master_upload: `master_topic/upload`,
+
+  uploadCSV: `master_topic/uploadCSV`,
 }

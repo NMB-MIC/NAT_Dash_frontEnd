@@ -37,7 +37,6 @@ class Alarm_topic extends Component {
     }
   }
 
-
   mc_list = async () => {
     let data_mc = await httpClient.post(server.master_list_mc)
     await this.setState({

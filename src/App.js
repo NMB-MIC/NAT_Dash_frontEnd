@@ -41,7 +41,11 @@ import AL_result from "./components/Auto_lineup/PR_AL/PR_AL"; // PR AL
 import Chart from "./components/MMS/chart_test/chart_test";
 import TIMELINE_AL from "./components/MMS/MMS_AL/MMS_AL";
 import TIMELINE_TB from "./components/MMS/MMS_TB/MMS_TB";
+import TIMELINE_ARP from "./components/MMS/MMS_ARP";
+import TIMELINE_AVS from "./components/MMS/MMS_AVS";
 import Alarm_topic from "./components/MMS/alarm_topic/alarm_topic";
+
+import csv_test from "./components/0.test/test_csv";
 
 
 
@@ -152,6 +156,9 @@ export default class App extends Component {
             {/* time line MMS chart  */}
             <Route path="/timeline_AL" component={TIMELINE_AL} />
             <Route path="/timeline_TB" component={TIMELINE_TB} />
+            <Route path="/timeline_ARP" component={TIMELINE_ARP} />
+            <Route path="/timeline_AVS" component={TIMELINE_AVS} />
+            <Route path="/csv_test" component={csv_test} />
 
             {/* <Route component={NotFoundPage} /> */}
             <Route exact={true} path="/" component={this.redirectToLogin} />
