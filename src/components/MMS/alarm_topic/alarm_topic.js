@@ -26,7 +26,6 @@ class Alarm_topic extends Component {
       progress: 0,
     }
   }
-
   componentDidMount = async () => {
     if (localStorage.getItem(key.USER_LV) === "Admin") {
       await this.mc_list();
@@ -36,7 +35,6 @@ class Alarm_topic extends Component {
       this.props.history.push("/home");
     }
   }
-
   mc_list = async () => {
     let data_mc = await httpClient.post(server.master_list_mc)
     await this.setState({
@@ -77,8 +75,7 @@ class Alarm_topic extends Component {
         text: "",
       });
       return;
-    }
-    window.location.replace("../alarm_topic");
+    } window.location.replace("../alarm_topic");
   }
   get_topic = async () => {
     let get_topic = await httpClient.get(server.master_get_topic)
@@ -87,7 +84,6 @@ class Alarm_topic extends Component {
       Topic: get_topic.data.result.Topic,
       machine: get_topic.data.result.machine,
       responsible: get_topic.data.result.responsible,
-
     })
     console.log(get_topic.data.result);
     // console.log(this.state.get_data);
@@ -161,15 +157,16 @@ class Alarm_topic extends Component {
     window.location.replace("../alarm_topic");
 
   }
-
   inputCSv = async () => {
     for (let index = 1; index <= this.state.csv_data.length - 1; index++) {
       if (this.state.csv_data[index][0] === "") {
         break
       } else {
-        let input = await httpClient.post(
-          server.master_upload + "/" + this.state.csv_data[index][0] + "/" + this.state.csv_data[index][1] + "/" + this.state.csv_data[index][2]
-        );
+        let input = await httpClient.post(server.master_upload, {
+          machine: this.state.csv_data[index][0],
+          Topic: this.state.csv_data[index][1],
+          responsible: this.state.csv_data[index][2],
+        })
         await this.setState({ uploaded: this.state.uploaded + 1 });
         await this.setState({
           progress:

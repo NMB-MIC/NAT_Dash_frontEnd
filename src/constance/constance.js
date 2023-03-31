@@ -223,5 +223,4 @@ export const server = {
   master_update_respon: `master_topic/update_respon`,
   master_upload: `master_topic/upload`,
 
-  uploadCSV: `master_topic/uploadCSV`,
 }

@@ -45,7 +45,6 @@ import TIMELINE_ARP from "./components/MMS/MMS_ARP";
 import TIMELINE_AVS from "./components/MMS/MMS_AVS";
 import Alarm_topic from "./components/MMS/alarm_topic/alarm_topic";
 
-import csv_test from "./components/0.test/test_csv";
 
 
 
@@ -158,7 +157,6 @@ export default class App extends Component {
             <Route path="/timeline_TB" component={TIMELINE_TB} />
             <Route path="/timeline_ARP" component={TIMELINE_ARP} />
             <Route path="/timeline_AVS" component={TIMELINE_AVS} />
-            <Route path="/csv_test" component={csv_test} />
 
             {/* <Route component={NotFoundPage} /> */}
             <Route exact={true} path="/" component={this.redirectToLogin} />

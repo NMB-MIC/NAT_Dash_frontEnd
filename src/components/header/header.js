@@ -14,132 +14,7 @@ class Header extends Component {
         <li className="nav-item d-none d-sm-inline-block">
           <a href="/home" className="nav-link"> HOME  </a>
         </li>
-        {/* <li className="nav-item d-none d-sm-inline-block">
-          <a href="http://192.168.1.2:4001/home" className="nav-link"> REAL TIME </a>
-        </li> */}
-
-        {/* <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span className="nav-item d-none d-sm-inline-block"> DASHBOARD </span>
-          </a>
-          <div className="dropdown-menu dropdown-menu-lg dropdown-menu-left" >
-            <div className="dropdown-divider" />
-            <a href="/Dash_MBR" className="dropdown-item">
-            
-              MBR DASHBOARD
-            </a>
-            <a href="/Dash_Turning" className="dropdown-item">
-             
-              TURNING DASHBOARD
-            </a>
-            <a href="/Dash_Grinding" className="dropdown-item">
-           
-              GRINDING DASHBOARD
-            </a>
-          </div>
-
-        </li> */}
-        {/* <li className="nav-item dropdown" >
-          <a
-            className="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            style={{ textAlign: '60' }}
-          >
-            DASHBOARD
-            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li className="dropdown-submenu dropdown-hover">
-
-              <a href="/Dash_Turning" className="dropdown-item">
-                <i className="fas fa-tasks" /> TURNING
-              </a>
-            </li>
-
-            <li className="dropdown-submenu dropdown-hover">
-              <a
-                id="dropdownSubMenu2"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                className="dropdown-item dropdown-toggle"
-              >
-                <i className="fas fa-tasks" /> GRINDING
-              </a>
-              <ul aria-labelledby="dropdownSubMenu2" className="dropdown-menu border-0 shadow">
-                <li>
-
-                  <a tabIndex={-1} href="/Dash_Grinding" className="dropdown-item">
-                    Raceway Hone (IRH)
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/Dash_ORH" className="dropdown-item">
-                    Raceway Hone (ORH)
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/Dash_IRB" className="dropdown-item">
-                    Bone Grinder (IRB)
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-
-            <li className="dropdown-submenu dropdown-hover">
-              <a
-                id="dropdownSubMenu2"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                className="dropdown-item dropdown-toggle"
-              >
-                <i className="fas fa-tasks" /> ASSEMBLY LINE
-              </a>
-              <ul aria-labelledby="dropdownSubMenu2" className="dropdown-menu border-0 shadow">
-                <li>
-                  <a tabIndex={-1} href="/Dash_MBR" className="dropdown-item">
-                    FFL (MBR)
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/Dash_ARP" className="dropdown-item">
-                    FFL (ARP)
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/Dash_AN" className="dropdown-item">
-                    FFL (AUTO NOISE)
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/Dash_AL" className="dropdown-item">
-                    FFL (AUTO LINE UP)
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/Dash_AVS" className="dropdown-item">
-                    FFL (AVS)
-                  </a>
-                </li>
-
-
-              </ul>
-            </li>
-
-          </div>
-
-        </li> */}
+       
 
         {/* Report */}
 
@@ -376,11 +251,6 @@ class Header extends Component {
                 <li>
                   <a tabIndex={-1} href="/Alarm_topic" className="dropdown-item">
                     Alarm Topic
-                  </a>
-                </li>
-                <li>
-                  <a tabIndex={-1} href="/csv_test" className="dropdown-item">
-                   CSV Topic test
                   </a>
                 </li>
               </ul>
