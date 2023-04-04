@@ -215,6 +215,12 @@ export const server = {
   AlarmTopic_time_AVS: `Timeline_AVS/AlarmTopic_time`,
   stop_time_AVS: `Timeline_AVS/Stop_time`,
 
+ GSSM_mc: `Timeline_AVS/mc_list`,
+  mc_status_log_AVS: `Timeline_AVS/mc_status_log`,
+  TIMELINE_AVS: `Timeline_AVS/Timeline_AVS`,
+  AlarmTopic_time_AVS: `Timeline_AVS/AlarmTopic_time`,
+  stop_time_AVS: `Timeline_AVS/Stop_time`,
+
   // master topic
   master_list_mc: `master_topic/list_mc`,
   master_Topic_item: `master_topic/Add_item`,

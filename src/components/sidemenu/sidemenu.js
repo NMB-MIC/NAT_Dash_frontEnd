@@ -111,7 +111,24 @@ class Sidemenu extends Component {
                               <p> AVS </p>
                             </a>
                           </li>
-
+                          <li className="nav-item">
+                            <a href="/timeline_AOD" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p> AOD </p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p> ANT </p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/timeline_AVS" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p> GSSM </p>
+                            </a>
+                          </li>
                         </ul>
                       </li>
 

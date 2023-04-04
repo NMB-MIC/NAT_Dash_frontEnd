@@ -25,13 +25,16 @@ class MMS_ARP extends Component {
   };
 
   componentDidMount = async () => {
-    let mc_list_data = await httpClient.post(server.ARP_mc)
-    await this.setState({
-      list_machine: mc_list_data.data.result,
-      selected_machine: mc_list_data.data.result[0].mc_no,
-      //date_start: moment().add(-0, "days").format("2023-01-13"),
-    })
-    console.log(mc_list_data.data.result);
+    try {
+      let mc_list_data = await httpClient.post(server.ARP_mc)
+      await this.setState({
+        list_machine: mc_list_data.data.result,
+        selected_machine: mc_list_data.data.result[0].mc_no,
+        //date_start: moment().add(-0, "days").format("2023-01-13"),
+      })
+      console.log(mc_list_data.data.result);
+    } catch (error) {}
+  
 
     setTimeout(
       function () {
@@ -240,9 +243,7 @@ class MMS_ARP extends Component {
           default:
           // code block
         }
-
       }
-
       await this.setState({
         timeline_series: [
           {

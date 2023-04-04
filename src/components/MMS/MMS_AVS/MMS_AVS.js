@@ -6,7 +6,7 @@ import * as moment from "moment";
 
 
 class MMS_AVS extends Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -23,15 +23,18 @@ class MMS_AVS extends Component {
 
       responsible: "All",
     }
-  }; 
-   componentDidMount = async () => {
-    let mc_list_data = await httpClient.post(server.AVS_mc)
-    await this.setState({
-      list_machine: mc_list_data.data.result,
-      selected_machine: mc_list_data.data.result[0].mc_no,
-      //date_start: moment().add(-0, "days").format("2023-01-13"),
-    })
-    console.log(mc_list_data.data.result);
+  };
+  componentDidMount = async () => {
+    try {
+      let mc_list_data = await httpClient.post(server.AVS_mc)
+      await this.setState({
+        list_machine: mc_list_data.data.result,
+        selected_machine: mc_list_data.data.result[0].mc_no,
+        //date_start: moment().add(-0, "days").format("2023-01-13"),
+      })
+      console.log(mc_list_data.data.result);
+    } catch (error) { }
+
 
     setTimeout(
       function () {
@@ -41,6 +44,14 @@ class MMS_AVS extends Component {
       200
     );
   }
+
+  click_update = async () => {
+    await this.timeline_status_log();
+    await this.show_chart_timeline();
+    await this.alarm_time();
+    await this.stop_time();
+
+  };
 
   renderTableRow = () => {
     try {
@@ -169,29 +180,133 @@ class MMS_AVS extends Component {
         responsible: this.state.responsible,
       });
       console.log(mc_data.data.result);
-      var M801 = []
+      var M610 = [], M623 = [], M600 = [], M601 = [], M602 = [], M603 = [], M605 = [], M606 = [], M607 = []
+      var M611 = [], M615 = [], M620 = [], M621 = [], M622 = [], M625 = [], M626 = [], M630 = [], M640 = []
+      var M641 = [], M642=[],M643 = [], M650 = [], M651 = [], M652 = [], M653 = [], M654 = [], M655 = [], M657 = []
 
       for (let index = 0; index < mc_data.data.result.length; index++) {
         switch (mc_data.data.result[index].topic) {
-          case "M801 AT-V501H ALARM":
-            M801.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+          case "M610 AIR PRESSURE ":
+            M610.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
             break;
-          
+          case "M623 CAMERA ERROR":
+            M623.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M600 NO-WORK ":
+            M600.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M601 FULL PARTS COUNTER":
+            M601.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M602 NG1 TRAY FULL":
+            M602.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M603 NG2 TRAY FULL":
+            M603.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M605 TRAY DOOR OPEN":
+            M605.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M606 TRAY CHANGER FULL WORK STOP":
+            M606.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M607 FULL LOT":
+            M607.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M611 EMERGENCY STOP":
+            M611.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M615 FULL TRAY COUNTER":
+            M615.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M620 ENTRANCE CYCLE OVER":
+            M620.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M621 TR FWD/BWD CYCLE OVER":
+            M621.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M622 TR FEED/HOME CYCLE OVER":
+            M622.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M625 NG CONTINUE CAMERA 1":
+            M625.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M626 NG CONTINUE CAMERA 2":
+            M626.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M630 T/O CYCLE OVER":
+            M630.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M640 NG EJECT CYCLE OVER":
+            M640.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M641 NG EJECT PASS MISS":
+            M641.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M642 OK PUSHER ALARM":
+            M642.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M643 NG ROBO ALARM":
+            M643.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M650 TRAY LIFTER MOTOR ALARM":
+            M650.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M651 TRAY AREA SENSOR ALARM":
+            M651.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M652 TRAY CV PUSHER ALARM":
+            M652.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M653 TRAY CV SHUTTER ALARM":
+            M653.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M653 TRAY CV SHUTTER ALARM":
+            M654.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M653 TRAY CV SHUTTER ALARM":
+            M655.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+          case "M657 TRAY LOCK CYL LS ALARM":
+            M657.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
+            break;
+
           default:
           // code block
         }
-
       }
-
       await this.setState({
         timeline_series: [
-          {
-            name: "M801 AT-V501H ALARM",
-            data: M801,
-          },
-         
+          {name: "M610 AIR PRESSURE ",data: M610,}, 
+          {name: "M623 CAMERA ERROR",data: M623,},
+          {name: "M600 NO-WORK ", data: M600,},
+          {name: "M601 FULL PARTS COUNTER",data: M601,},
+          {name: "M602 NG1 TRAY FULL",data: M602,},
+          {name: "M603 NG2 TRAY FULL",data: M603,},
+          {name: "M605 TRAY DOOR OPEN",data: M605,},
+          {name: "M606 TRAY CHANGER FULL WORK STOP",data: M606,},
+          {name: "M607 FULL LOT",data: M607,},
+          {name: "M611 EMERGENCY STOP",data: M611,},
+          {name: "M615 FULL TRAY COUNTER",data: M615,},
+          {name: "M620 ENTRANCE CYCLE OVER",data: M620,},
+          {name: "M621 TR FWD/BWD CYCLE OVER",data: M621,},
+          {name: "M622 TR FEED/HOME CYCLE OVER",data: M622,},
+          {name: "M625 NG CONTINUE CAMERA 1",data: M625,},
+          {name: "M626 NG CONTINUE CAMERA 2",data: M626,},
+          {name: "M640 NG EJECT CYCLE OVER",data: M640,},
+          {name: "M630 T/O CYCLE OVER",data: M630,},
+          {name: "M641 NG EJECT PASS MISS",data: M641,},
+          {name: "M642 OK PUSHER ALARM",data: M642,},
+          {name: "M643 NG ROBO ALARM",data: M643,},
+          {name: "M650 TRAY LIFTER MOTOR ALARM",data: M650,},
+          {name: "M651 TRAY AREA SENSOR ALARM",data: M651,},
+          {name: "M652 TRAY CV PUSHER ALARM",data: M652,},
+          {name: "M653 TRAY CV SHUTTER ALARM",data: M653,},
+          {name: "M654 TRAY CHANGER CYCLE OVER",data: M654,},
+          {name: "M655 NO TRAY ALARM",data: M655,},
+          {name: "M657 TRAY LOCK CYL LS ALARM",data: M657,},
         ],
-        timeline_options: {
+        timeline_options: {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
           chart: {
             // background: '#EBEDEF',
             height: 250,
@@ -246,7 +361,7 @@ class MMS_AVS extends Component {
         },
       });
 
-    } catch (error) {}
+    } catch (error) { }
   };
   alarm_time = async () => {
     let alarm = await httpClient.post(server.AlarmTopic_time_AVS, {
@@ -291,94 +406,94 @@ class MMS_AVS extends Component {
   }
 
   render() {
-    return  ( <div className="content-wrapper"> 
-         <section className="content-header">
-          <div className="container-fluid">
-            <h2 className="text-center" style={{ fontWeight: 'bold' }} > MACHINE MONITORING STATUS </h2>
-          </div>
-        </section> 
-        <div className="row">
-          <div className="card card-warning col-md-12" >
+    return (<div className="content-wrapper">
+      <section className="content-header">
+        <div className="container-fluid">
+          <h2 className="text-center" style={{ fontWeight: 'bold' }} > MACHINE MONITORING STATUS </h2>
+        </div>
+      </section>
+      <div className="row">
+        <div className="card card-warning col-md-12" >
 
-            <div className="card-body">
-              <div className="col-md-12">
-                <div className="row" >
-                  <div className="col-md-1"> </div>
-                  <div className="col-md-2">
-                    <h5>
-                      <i class="fas fa-calendar-day">&nbsp;</i>DATE
-                    </h5>
-                    <input
-                      class="form-control is-valid"
-                      type="date"
-                      id="id_daydate"
-                      name="name_daydate"
-                      value={this.state.date_start}
-                      onChange={async (e) => {
-                        await this.setState({
-                          date_start: moment(e.target.value).format("YYYY-MM-DD"),
-                        });
-                      }}
-                    />
+          <div className="card-body">
+            <div className="col-md-12">
+              <div className="row" >
+                <div className="col-md-1"> </div>
+                <div className="col-md-2">
+                  <h5>
+                    <i class="fas fa-calendar-day">&nbsp;</i>DATE
+                  </h5>
+                  <input
+                    class="form-control is-valid"
+                    type="date"
+                    id="id_daydate"
+                    name="name_daydate"
+                    value={this.state.date_start}
+                    onChange={async (e) => {
+                      await this.setState({
+                        date_start: moment(e.target.value).format("YYYY-MM-DD"),
+                      });
+                    }}
+                  />
 
-                  </div>
-                  <div className="col-md-2">
-                    <h5>
-                      <i class="fa fa-layer-group">&nbsp;</i>PROCESS
-                    </h5>
-                    <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AVS" type="text" className="form-control" />
-                  </div>
+                </div>
+                <div className="col-md-2">
+                  <h5>
+                    <i class="fa fa-layer-group">&nbsp;</i>PROCESS
+                  </h5>
+                  <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AVS" type="text" className="form-control" />
+                </div>
 
-                  <div className="col-md-2">
-                    <h5>
-                      <i class="fa fa-memory">&nbsp;</i> MACHINE
-                    </h5>
+                <div className="col-md-2">
+                  <h5>
+                    <i class="fa fa-memory">&nbsp;</i> MACHINE
+                  </h5>
+                  <select
+                    value={this.state.selected_machine}
+                    className="form-control"
+                    onChange={(e) => {
+                      this.setState({ selected_machine: e.target.value });
+                    }}
+                  >
+                    {/* <option>---</option> */}
+                    {this.renderTableRow()}
+                  </select>
+                </div>
+                <div className="col-md-3">
+                  <h5><i class="fa fa-user">&nbsp;</i> RESPONSIBLE </h5>
+                  <div className="input-group">
                     <select
-                      value={this.state.selected_machine}
+                      value={this.state.responsible}
                       className="form-control"
                       onChange={(e) => {
-                        this.setState({ selected_machine: e.target.value });
+                        this.setState({ responsible: e.target.value });
                       }}
                     >
-                      {/* <option>---</option> */}
-                      {this.renderTableRow()}
+
+                      <option>All</option>
+                      <option>MAINTENANCE TURNING</option>
+                      <option>LINE TURNING</option>
+
                     </select>
-                  </div>
-                  <div className="col-md-3">
-                    <h5><i class="fa fa-user">&nbsp;</i> RESPONSIBLE </h5>
-                    <div className="input-group">
-                      <select
-                        value={this.state.responsible}
-                        className="form-control"
-                        onChange={(e) => {
-                          this.setState({ responsible: e.target.value });
-                        }}
-                      >
 
-                        <option>All</option>
-                        <option>MAINTENANCE TURNING</option>
-                        <option>LINE TURNING</option>
-
-                      </select>
-
-                    </div>
-                  </div>
-
-                  <div className="col-md-1">
-                    <h5>&nbsp;</h5>
-                    <button
-                      type="button"
-                      class="btn btn-block btn-danger"
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        this.click_update();
-                      }}
-                    >
-                      <span className="fas fa-redo-alt" />
-                    </button>
                   </div>
                 </div>
-                {/* 
+
+                <div className="col-md-1">
+                  <h5>&nbsp;</h5>
+                  <button
+                    type="button"
+                    class="btn btn-block btn-danger"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      this.click_update();
+                    }}
+                  >
+                    <span className="fas fa-redo-alt" />
+                  </button>
+                </div>
+              </div>
+              {/* 
                 <div className="row" >
                   <div className="col-md-12">
                     <div className="col-md-12">
@@ -386,83 +501,83 @@ class MMS_AVS extends Component {
                     </div>
                   </div>
                 </div> */}
-                <div className="row" >
+              <div className="row" >
+                <div className="col-md-12">
                   <div className="col-md-12">
-                    <div className="col-md-12">
-                      <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={300} />
-                    </div>
+                    <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={300} />
                   </div>
                 </div>
-                <div className="row" >
-                  <div className="col-md-12">
-
-                    <div className="col-md-12">
-                      <ReactApexChart options={this.state.timeline_options1} series={this.state.timeline_series1} type="rangeBar" height={300} />
-                    </div>
-                  </div>
-                </div>
-
               </div>
-              <div className="row">
-                <div className="col-1"></div>
-                <div className="col-5">
-                  <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
-                    <div className="card-header" style={{ backgroundColor: "#fa8804", border: true }} >
-                      <h3 className="card-title" style={
-                        {
-                          textAlign: "center",
-                          fontSize: "20px",
-                          // color: "#fa8804",
-                          fontWeight: "'bold'",
-                        }}> <i class="fas fa-exclamation-triangle"></i> 3 WORST ALARM-STOP</h3>
-                    </div>
-                    <div className="card-body">
-                      <table className="table table-bordered table-hover">
-                        <thead>
-                          <tr>
-                            <th>TOPIC</th>
-                            <th>TIME (HH:mm:ss)</th>
+              <div className="row" >
+                <div className="col-md-12">
 
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.renderTable()}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-5">
-                  <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
-                    <div className="card-header" style={{ backgroundColor: "#FFCCCC", border: true }} >
-                      <h3 className="card-title" style={
-                        {
-                          textAlign: "center",
-                          fontSize: "20px",
-                          color: "#FF0000",
-                          fontWeight: "'bold'",
-                        }}><i class="fas fa-exclamation-triangle"></i> 3 WORST STOP-ALARM</h3>
-                    </div>
-                    <div className="card-body">
-                      <table className="table table-bordered table-hover">
-                        <thead>
-                          <tr>
-                            <th>TOPIC</th>
-                            <th>TIME (HH:mm:ss)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.renderTable_stop()}
-                        </tbody>
-                      </table>
-                    </div>
+                  <div className="col-md-12">
+                    <ReactApexChart options={this.state.timeline_options1} series={this.state.timeline_series1} type="rangeBar" height={300} />
                   </div>
                 </div>
               </div>
 
             </div>
+            <div className="row">
+              <div className="col-1"></div>
+              <div className="col-5">
+                <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
+                  <div className="card-header" style={{ backgroundColor: "#fa8804", border: true }} >
+                    <h3 className="card-title" style={
+                      {
+                        textAlign: "center",
+                        fontSize: "20px",
+                        // color: "#fa8804",
+                        fontWeight: "'bold'",
+                      }}> <i class="fas fa-exclamation-triangle"></i> 3 WORST ALARM-STOP</h3>
+                  </div>
+                  <div className="card-body">
+                    <table className="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>TOPIC</th>
+                          <th>TIME (HH:mm:ss)</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.renderTable()}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div className="col-5">
+                <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
+                  <div className="card-header" style={{ backgroundColor: "#FFCCCC", border: true }} >
+                    <h3 className="card-title" style={
+                      {
+                        textAlign: "center",
+                        fontSize: "20px",
+                        color: "#FF0000",
+                        fontWeight: "'bold'",
+                      }}><i class="fas fa-exclamation-triangle"></i> 3 WORST STOP-ALARM</h3>
+                  </div>
+                  <div className="card-body">
+                    <table className="table table-bordered table-hover">
+                      <thead>
+                        <tr>
+                          <th>TOPIC</th>
+                          <th>TIME (HH:mm:ss)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.renderTable_stop()}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+      </div>
     </div>
     );
   }
