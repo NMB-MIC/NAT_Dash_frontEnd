@@ -215,12 +215,27 @@ export const server = {
   AlarmTopic_time_AVS: `Timeline_AVS/AlarmTopic_time`,
   stop_time_AVS: `Timeline_AVS/Stop_time`,
 
- GSSM_mc: `Timeline_AVS/mc_list`,
-  mc_status_log_AVS: `Timeline_AVS/mc_status_log`,
-  TIMELINE_AVS: `Timeline_AVS/Timeline_AVS`,
-  AlarmTopic_time_AVS: `Timeline_AVS/AlarmTopic_time`,
-  stop_time_AVS: `Timeline_AVS/Stop_time`,
+  GSSM_mc: `Timeline_GSSM/mc_list`,
+  mc_status_log_GSSM: `Timeline_GSSM/mc_status_log`,
+  TIMELINE_GSSM: `Timeline_GSSM/Timeline_GSSM`,
+  AlarmTopic_time_GSSM: `Timeline_GSSM/AlarmTopic_time`,
+  stop_time_GSSM: `Timeline_GSSM/Stop_time`,
+  AOD_mc: `Timeline_AOD/mc_list`,
+  mc_status_log_AOD: `Timeline_AOD/mc_status_log`,
+  TIMELINE_AOD: `Timeline_AOD/Timeline_AOD`,
+  AlarmTopic_time_AOD: `Timeline_AOD/AlarmTopic_time`,
+  stop_time_AOD: `Timeline_AOD/Stop_time`,
+  //GN process 
+  IRB_mc: `Timeline_GN/mc_list_IRB`,
+  mc_status_log_IRB: `Timeline_GN/mc_status_log_IRB`,
+  TIMELINE_IRB: `TTimeline_GN/Timeline_IRB`,
+  AlarmTopic_time_IRB: `Timeline_GN/AlarmTopic_time_IRB`,
+  stop_time_IRB: `Timeline_GN/Stop_time_IRB`,
 
+
+
+
+  
   // master topic
   master_list_mc: `master_topic/list_mc`,
   master_Topic_item: `master_topic/Add_item`,

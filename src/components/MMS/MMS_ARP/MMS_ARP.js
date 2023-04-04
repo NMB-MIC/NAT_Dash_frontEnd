@@ -359,7 +359,8 @@ class MMS_ARP extends Component {
       });
 
     } catch (error) {}
-  };
+  }; 
+  
   alarm_time = async () => {
     let alarm = await httpClient.post(server.AlarmTopic_time_ARP, {
       date: this.state.date_start,
@@ -439,7 +440,7 @@ class MMS_ARP extends Component {
                     <h5>
                       <i class="fa fa-layer-group">&nbsp;</i>PROCESS
                     </h5>
-                    <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="ARP" type="text" className="form-control" />
+                    <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="ASSEMBLY" type="text" className="form-control" />
                   </div>
 
                   <div className="col-md-2">

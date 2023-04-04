@@ -52,19 +52,19 @@ class Sidemenu extends Component {
                         </a>
                         <ul className="nav nav-treeview">
                           <li className="nav-item">
-                            <a href="/Dash_Grinding" className="nav-link">
+                            <a href="/timeline_IR H" className="nav-link">
                               <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p>IRH</p>
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/Dash_ORH" className="nav-link" >
+                            <a href="/timeline_ORH" className="nav-link" >
                               <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p>ORH</p>
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/Dash_IRB" className="nav-link">
+                            <a href="/timeline_IRB" className="nav-link">
                               <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p>IRB</p>
                             </a>
@@ -124,7 +124,7 @@ class Sidemenu extends Component {
                             </a>
                           </li>
                           <li className="nav-item">
-                            <a href="/timeline_AVS" className="nav-link">
+                            <a href="/timeline_GSSM" className="nav-link">
                               <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p> GSSM </p>
                             </a>

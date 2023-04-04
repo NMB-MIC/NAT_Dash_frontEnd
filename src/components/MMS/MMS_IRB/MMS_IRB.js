@@ -4,8 +4,8 @@ import { httpClient } from "../../../utils/HttpClient";
 import ReactApexChart from "react-apexcharts";
 import * as moment from "moment";
 
-class MMS_AOD extends Component {
-  
+
+class MMS_IRB extends Component {
   constructor(props) {
     super(props)
 
@@ -22,20 +22,19 @@ class MMS_AOD extends Component {
 
       responsible: "All",
     }
-  };
+  }
 
-  
   componentDidMount = async () => {
     try {
-      let mc_list_data = await httpClient.post(server.AOD_mc)
+      let mc_list_data = await httpClient.post(server.IRB_mc)
       await this.setState({
         list_machine: mc_list_data.data.result,
         selected_machine: mc_list_data.data.result[0].mc_no,
         //date_start: moment().add(-0, "days").format("2023-01-13"),
       })
       console.log(mc_list_data.data.result);
-    } catch (error) {}
-  
+    } catch (error) { }
+
 
     setTimeout(
       function () {
@@ -45,14 +44,6 @@ class MMS_AOD extends Component {
       200
     );
   }
-
-  click_update = async () => {
-    await this.timeline_status_log();
-    await this.show_chart_timeline();
-    await this.alarm_time();
-    await this.stop_time();
-
-  };
 
   renderTableRow = () => {
     try {
@@ -68,7 +59,7 @@ class MMS_AOD extends Component {
   timeline_status_log = async () => {
     // console.log(this.state.timeline_series);
     try {
-      let data_status_log = await httpClient.post(server.mc_status_log_AOD, {
+      let data_status_log = await httpClient.post(server.mc_status_log_IRB, {
         date: this.state.date_start,
         machine: this.state.selected_machine,
       });
@@ -172,94 +163,9 @@ class MMS_AOD extends Component {
     } catch (error) { }
   };
 
-  show_chart_timeline = async () => {
-    // console.log(this.state.timeline_series);
-    try {
-      let mc_data = await httpClient.post(server.TIMELINE_AOD, {
-        date: this.state.date_start,
-        machine: this.state.selected_machine,
-        responsible: this.state.responsible,
-      });
-      console.log(mc_data.data.result);
-      var M801 = []
-      for (let index = 0; index < mc_data.data.result.length; index++) {
-        switch (mc_data.data.result[index].topic) {
-          case "M801 AT-V501H ALARM":
-            M801.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
-            break;
-        
-          default:
-          // code block
-        }
-      }
-      await this.setState({
-        timeline_series: [
-          {
-            name: "M801 AT-V501H ALARM",
-            data: M801,
-          },
-        
-        ],
-        timeline_options: {
-          chart: {
-            // background: '#EBEDEF',
-            height: 250,
-            type: "rangeBar",
-          },
-          plotOptions: {
-            bar: {
-              horizontal: true,
-              barHeight: "100%",
-              rangeBarGroupRows: true,
-            },
-          },
-          colors: ["#D7263D", "#008b02", "#57aeff", "#F46036", "#E2C044",
-            "#ff08e2", "#0d1dfc", "#94bafb", "#195529", "#c37e41", "#a7037e",
-            "#CCFF00", "#FFFF66", "#FFCC66", "#CC9999", "#CC6666",
-            "#FF6666", "#9900FF", "#66CC00", "#66CCCC", "#000033",
-            "#FF0066", "#C70039", "#FFC13D", "#45B39D", "#2962FF",
-            "#18FFFF", "#7CB342", "#EEFF41", "#FF5722", "#E91E63",
-            "#AB47BC", "#FF96C5", "#74737A", "#00C3AF", "#6C88C4",
-            "#FFA23A", "#FDBB9F", "#FF1744"
-          ],
-          fill: {
-            type: "solid",
-          },
-          // labels: Data_time,
-          xaxis: {
-            type: "datetime",
-            labels: {
-              datetimeUTC: false,
-            },
-          },
-          yaxis: {
-            show: true,
-            title: {
-              style: {
-                fontSize: '10px',
-              }
-            }
-          },
-          legend: {
-            show: true,
-            showForNullSeries: false,
-          },
-          tooltip: {
-            x: {
-              format: "HH:mm:ss",
-            },
-          },
-          // dataLabels: {
-          //   enabled: true,
-          // }
-        },
-      });
 
-    } catch (error) {}
-  }; 
-  
   alarm_time = async () => {
-    let alarm = await httpClient.post(server.AlarmTopic_time_AOD, {
+    let alarm = await httpClient.post(server.AlarmTopic_time_IRB, {
       date: this.state.date_start,
       machine: this.state.selected_machine,
     })
@@ -280,7 +186,7 @@ class MMS_AOD extends Component {
   }
 
   stop_time = async () => {
-    let stop_time = await httpClient.post(server.stop_time_AOD, {
+    let stop_time = await httpClient.post(server.stop_time_IRB, {
       date: this.state.date_start,
       machine: this.state.selected_machine,
     })
@@ -337,7 +243,7 @@ class MMS_AOD extends Component {
                   <h5>
                     <i class="fa fa-layer-group">&nbsp;</i>PROCESS
                   </h5>
-                  <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AOD" type="text" className="form-control" />
+                  <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="ASSEMBLY" type="text" className="form-control" />
                 </div>
 
                 <div className="col-md-2">
@@ -390,13 +296,13 @@ class MMS_AOD extends Component {
                 </div>
               </div>
               {/* 
-              <div className="row" >
+            <div className="row" >
+              <div className="col-md-12">
                 <div className="col-md-12">
-                  <div className="col-md-12">
-                    <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={230} />
-                  </div>
+                  <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={230} />
                 </div>
-              </div> */}
+              </div>
+            </div> */}
               <div className="row" >
                 <div className="col-md-12">
                   <div className="col-md-12">
@@ -479,4 +385,4 @@ class MMS_AOD extends Component {
   }
 }
 
-export default MMS_AOD;
+export default MMS_IRB;

@@ -441,7 +441,7 @@ class MMS_AVS extends Component {
                   <h5>
                     <i class="fa fa-layer-group">&nbsp;</i>PROCESS
                   </h5>
-                  <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AVS" type="text" className="form-control" />
+                  <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="ASSEMBLY" type="text" className="form-control" />
                 </div>
 
                 <div className="col-md-2">
