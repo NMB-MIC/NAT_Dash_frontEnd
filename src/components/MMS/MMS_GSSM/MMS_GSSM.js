@@ -482,9 +482,18 @@ class MMS_GSSM extends Component {
       }
       await this.setState({
         timeline_series: [
-          { name: "920 AIR LOW PRESSURE", data: A920 }, { name: "920 AIR LOW PRESSURE", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
-         
-                                                                                                                                                     
+          { name: "920 AIR LOW PRESSURE", data: A920 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
+          { name: "958  SNAP INDEX1  ALM ", data: A958 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "965 SHILD PP A ALM", data: A965 },
+          { name: "969 SHILD PP B ALM", data: A969 }, { name: "999 CC-Link SETTIG ERROR", data: A999 }, { name: "900 BRG NO WORK", data: A900 },
+
+          { name: "901 SHIELD WAIT", data: A901 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
+          { name: "920 AIR LOW PRESSURE", data: A920 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
+          { name: "920 AIR LOW PRESSURE", data: A920 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
+          { name: "920 AIR LOW PRESSURE", data: A920 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
+          { name: "920 AIR LOW PRESSURE", data: A920 }, { name: "922 MAIN INDEX ALAM", data: A922 }, { name: "957 RAM PUMP AIR PRESSURE LOW", data: A957 },
+
+
+
         ],
         timeline_options: {
           chart: {
