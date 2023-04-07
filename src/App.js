@@ -45,6 +45,8 @@ import TIMELINE_ARP from "./components/MMS/MMS_ARP";
 import TIMELINE_AVS from "./components/MMS/MMS_AVS";
 import TIMELINE_GSSM from "./components/MMS/MMS_GSSM";
 import TIMELINE_AOD from "./components/MMS/MMS_AOD";
+import TIMELINE_IRB from "./components/MMS/MMS_IRB";
+import TIMELINE_IRR from "./components/MMS/MMS_IRR";
 // import TIMELINE_AOD from "./components/MMS/MMS_AOD";
 import Alarm_topic from "./components/MMS/alarm_topic/alarm_topic";
 
@@ -162,6 +164,8 @@ export default class App extends Component {
             <Route path="/timeline_AVS" component={TIMELINE_AVS} />
             <Route path="/timeline_GSSM" component={TIMELINE_GSSM} />
             <Route path="/timeline_AOD" component={TIMELINE_AOD} />
+            <Route path="/timeline_IRB" component={TIMELINE_IRB} />
+            <Route path="/timeline_IRR" component={TIMELINE_IRR} />
 
             {/* <Route component={NotFoundPage} /> */}
             <Route exact={true} path="/" component={this.redirectToLogin} />

@@ -228,10 +228,15 @@ export const server = {
   //GN process 
   IRB_mc: `Timeline_GN/mc_list_IRB`,
   mc_status_log_IRB: `Timeline_GN/mc_status_log_IRB`,
-  TIMELINE_IRB: `TTimeline_GN/Timeline_IRB`,
+  TIMELINE_IRB: `Timeline_GN/Timeline_IRB`,
   AlarmTopic_time_IRB: `Timeline_GN/AlarmTopic_time_IRB`,
   stop_time_IRB: `Timeline_GN/Stop_time_IRB`,
 
+  IRR_mc: `Timeline_GN/mc_list_IRR`,
+  mc_status_log_IRR: `Timeline_GN/mc_status_log_IRR`,
+  TIMELINE_IRR: `Timeline_GN/Timeline_IRR`,
+  AlarmTopic_time_IRR: `Timeline_GN/AlarmTopic_time_IRR`,
+  stop_time_IRR: `Timeline_GN/Stop_time_IRR`,
 
 
 

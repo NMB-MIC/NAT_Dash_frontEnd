@@ -52,9 +52,15 @@ class Sidemenu extends Component {
                         </a>
                         <ul className="nav nav-treeview">
                           <li className="nav-item">
-                            <a href="/timeline_IR H" className="nav-link">
+                            <a href="/timeline_IRH" className="nav-link">
                               <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p>IRH</p>
+                            </a>
+                          </li>
+                          <li className="nav-item">
+                            <a href="/timeline_IRR" className="nav-link">
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
+                              <p>IRR</p>
                             </a>
                           </li>
                           <li className="nav-item">
