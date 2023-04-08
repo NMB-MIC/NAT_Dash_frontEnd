@@ -40,7 +40,6 @@ class MMS_AL extends Component {
       }.bind(this),
       200
     );
-
   }
   renderTableRow = () => {
     try {
