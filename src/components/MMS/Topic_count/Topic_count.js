@@ -164,13 +164,7 @@ console.log(my_serie);
     } catch (error) {
 
     }
-
-
   }
-
-
-
-
   render() {
     return (<div className="content-wrapper">
       <section className="content-header">
@@ -292,7 +286,7 @@ console.log(my_serie);
                 <div className="row">
                   <div className="col-md-12">
                     <div id="chart">
-                      <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={350} />
+                      <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={500} />
                     </div> </div>
                 </div>
               </div>
