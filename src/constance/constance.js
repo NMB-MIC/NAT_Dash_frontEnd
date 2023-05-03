@@ -1,5 +1,5 @@
-export const apiUrl = "http://localhost:4001/NAT_Dashboard/"; // <<<<< same back end  >>>>>>
-//export const apiUrl = "http://192.168.1.2:4001/NAT_Dashboard/"; // <<<<< same back end  >>>>>> Nat Dx project
+//export const apiUrl = "http://localhost:4001/NAT_Dashboard/"; // <<<<< same back end  >>>>>>
+export const apiUrl = "http://192.168.1.2:4001/NAT_Dashboard/"; // <<<<< same back end  >>>>>> Nat Dx project
 //export const apiUrl = "http://192.168.1.51:2020/NAT_Dashboard/"; // <<<<< same back end  >>>>>> 
 
 export const key = {

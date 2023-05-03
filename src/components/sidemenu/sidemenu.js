@@ -38,7 +38,7 @@ class Sidemenu extends Component {
                       <li className="nav-item">
                         <a href="/MMS" className="nav-link">
                           <i className="far fa-circle nav-icon" />
-                          <p> MMS </p>
+                          <p> MMS Count </p>
                         </a>
                       </li>
 
