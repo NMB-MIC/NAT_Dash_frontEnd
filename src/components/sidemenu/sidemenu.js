@@ -36,6 +36,13 @@ class Sidemenu extends Component {
                     <ul className="nav nav-treeview auto">
 
                       <li className="nav-item">
+                        <a href="/MMS" className="nav-link">
+                          <i className="far fa-circle nav-icon" />
+                          <p> MMS </p>
+                        </a>
+                      </li>
+
+                      <li className="nav-item">
                         <a href="/timeline_TB" className="nav-link">
                           <i className="far fa-circle nav-icon" />
                           <p> TURINING </p>
@@ -99,7 +106,7 @@ class Sidemenu extends Component {
                               <p>ARP</p>
                             </a>
                           </li>
-                         <li className="nav-item">
+                          <li className="nav-item">
                             <a href="" className="nav-link">
                               <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p> AUTO NOISE</p>
@@ -107,7 +114,7 @@ class Sidemenu extends Component {
                           </li>
                           <li className="nav-item">
                             <a href="/timeline_AL" className="nav-link">
-                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }}/>
+                              <i className="far fa-dot-circle nav-icon" style={{ marginLeft: 20 }} />
                               <p> AUTO LINE UP</p>
                             </a>
                           </li>

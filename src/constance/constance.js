@@ -238,9 +238,11 @@ export const server = {
   AlarmTopic_time_IRR: `Timeline_GN/AlarmTopic_time_IRR`,
   stop_time_IRR: `Timeline_GN/Stop_time_IRR`,
 
+  MC_MMS: `MMS/MC_MMS`,
+  topic_count: `MMS/topic_count`,
+  topic_count_test : `MMS/topic_count_test`,
+  getResult : `MMS/getResult`,
 
-
-  
   // master topic
   master_list_mc: `master_topic/list_mc`,
   master_Topic_item: `master_topic/Add_item`,
