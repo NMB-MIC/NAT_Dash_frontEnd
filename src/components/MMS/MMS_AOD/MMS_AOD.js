@@ -5,7 +5,7 @@ import ReactApexChart from "react-apexcharts";
 import * as moment from "moment";
 
 class MMS_AOD extends Component {
-  
+
   constructor(props) {
     super(props)
 
@@ -24,7 +24,7 @@ class MMS_AOD extends Component {
     }
   };
 
-  
+
   componentDidMount = async () => {
     try {
       let mc_list_data = await httpClient.post(server.AOD_mc)
@@ -34,8 +34,8 @@ class MMS_AOD extends Component {
         //date_start: moment().add(-0, "days").format("2023-01-13"),
       })
       console.log(mc_list_data.data.result);
-    } catch (error) {}
-  
+    } catch (error) { }
+
 
     setTimeout(
       function () {
@@ -187,7 +187,7 @@ class MMS_AOD extends Component {
           case "M801 AT-V501H ALARM":
             M801.push({ x: "ALARM", y: [new Date(mc_data.data.result[index].occurred).getTime(), new Date(mc_data.data.result[index].restored).getTime()] });
             break;
-        
+
           default:
           // code block
         }
@@ -198,7 +198,7 @@ class MMS_AOD extends Component {
             name: "M801 AT-V501H ALARM",
             data: M801,
           },
-        
+
         ],
         timeline_options: {
           chart: {
@@ -255,9 +255,9 @@ class MMS_AOD extends Component {
         },
       });
 
-    } catch (error) {}
-  }; 
-  
+    } catch (error) { }
+  };
+
   alarm_time = async () => {
     let alarm = await httpClient.post(server.AlarmTopic_time_AOD, {
       date: this.state.date_start,
@@ -303,93 +303,93 @@ class MMS_AOD extends Component {
   render() {
     return (
       <div className="content-wrapper">
-      <section className="content-header">
-        <div className="container-fluid">
-          <h2 className="text-center" style={{ fontWeight: 'bold' }} > MACHINE MONITORING STATUS </h2>
-        </div>
-      </section>
-      <div className="row">
-        <div className="card card-warning col-md-12" >
+        <section className="content-header">
+          <div className="container-fluid">
+            <h2 className="text-center" style={{ fontWeight: 'bold' }} > MACHINE MONITORING STATUS </h2>
+          </div>
+        </section>
+        <div className="row">
+          <div className="card card-warning col-md-12" >
 
-          <div className="card-body">
-            <div className="col-md-12">
-              <div className="row" >
-                <div className="col-md-1"> </div>
-                <div className="col-md-2">
-                  <h5>
-                    <i class="fas fa-calendar-day">&nbsp;</i>DATE
-                  </h5>
-                  <input
-                    class="form-control is-valid"
-                    type="date"
-                    id="id_daydate"
-                    name="name_daydate"
-                    value={this.state.date_start}
-                    onChange={async (e) => {
-                      await this.setState({
-                        date_start: moment(e.target.value).format("YYYY-MM-DD"),
-                      });
-                    }}
-                  />
-
-                </div>
-                <div className="col-md-2">
-                  <h5>
-                    <i class="fa fa-layer-group">&nbsp;</i>PROCESS
-                  </h5>
-                  <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AOD" type="text" className="form-control" />
-                </div>
-
-                <div className="col-md-2">
-                  <h5>
-                    <i class="fa fa-memory">&nbsp;</i> MACHINE
-                  </h5>
-                  <select
-                    value={this.state.selected_machine}
-                    className="form-control"
-                    onChange={(e) => {
-                      this.setState({ selected_machine: e.target.value });
-                    }}
-                  >
-                    {/* <option>---</option> */}
-                    {this.renderTableRow()}
-                  </select>
-                </div>
-                <div className="col-md-3">
-                  <h5><i class="fa fa-user">&nbsp;</i> RESPONSIBLE </h5>
-                  <div className="input-group">
-                    <select
-                      value={this.state.responsible}
-                      className="form-control"
-                      onChange={(e) => {
-                        this.setState({ responsible: e.target.value });
+            <div className="card-body">
+              <div className="col-md-12">
+                <div className="row" >
+                  <div className="col-md-1"> </div>
+                  <div className="col-md-2">
+                    <h5>
+                      <i class="fas fa-calendar-day">&nbsp;</i>DATE
+                    </h5>
+                    <input
+                      class="form-control is-valid"
+                      type="date"
+                      id="id_daydate"
+                      name="name_daydate"
+                      value={this.state.date_start}
+                      onChange={async (e) => {
+                        await this.setState({
+                          date_start: moment(e.target.value).format("YYYY-MM-DD"),
+                        });
                       }}
-                    >
-
-                      <option>All</option>
-                      <option>MAINTENANCE TURNING</option>
-                      <option>LINE TURNING</option>
-
-                    </select>
+                    />
 
                   </div>
-                </div>
+                  <div className="col-md-2">
+                    <h5>
+                      <i class="fa fa-layer-group">&nbsp;</i>PROCESS
+                    </h5>
+                    <input style={{ fontWeight: "bold", fontSize: 20, textAlign: 'center' }} value="AOD" type="text" className="form-control" />
+                  </div>
 
-                <div className="col-md-1">
-                  <h5>&nbsp;</h5>
-                  <button
-                    type="button"
-                    class="btn btn-block btn-danger"
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      this.click_update();
-                    }}
-                  >
-                    <span className="fas fa-redo-alt" />
-                  </button>
+                  <div className="col-md-2">
+                    <h5>
+                      <i class="fa fa-memory">&nbsp;</i> MACHINE
+                    </h5>
+                    <select
+                      value={this.state.selected_machine}
+                      className="form-control"
+                      onChange={(e) => {
+                        this.setState({ selected_machine: e.target.value });
+                      }}
+                    >
+                      {/* <option>---</option> */}
+                      {this.renderTableRow()}
+                    </select>
+                  </div>
+                  <div className="col-md-3">
+                    <h5><i class="fa fa-user">&nbsp;</i> RESPONSIBLE </h5>
+                    <div className="input-group">
+                      <select
+                        value={this.state.responsible}
+                        className="form-control"
+                        onChange={(e) => {
+                          this.setState({ responsible: e.target.value });
+                        }}
+                      >
+
+                        <option>All</option>
+                        <option>MAINTENANCE</option>
+                        <option>PRODUCTION LINE</option>
+
+                      </select>
+
+                    </div>
+                  </div>
+
+                  <div className="col-md-1">
+                    <h5>&nbsp;</h5>
+                    <button
+                      type="button"
+                      class="btn btn-block btn-danger"
+                      onClick={async (e) => {
+                        e.preventDefault();
+                        this.click_update();
+                      }}
+                    >
+                      <span className="fas fa-redo-alt" />
+                    </button>
+                  </div>
                 </div>
-              </div>
-              {/* 
+                {/* 
               <div className="row" >
                 <div className="col-md-12">
                   <div className="col-md-12">
@@ -397,84 +397,84 @@ class MMS_AOD extends Component {
                   </div>
                 </div>
               </div> */}
-              <div className="row" >
-                <div className="col-md-12">
+                <div className="row" >
                   <div className="col-md-12">
-                    <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={300} />
+                    <div className="col-md-12">
+                      <ReactApexChart options={this.state.timeline_options} series={this.state.timeline_series} type="rangeBar" height={300} />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="row" >
-                <div className="col-md-12">
-
+                <div className="row" >
                   <div className="col-md-12">
-                    <ReactApexChart options={this.state.timeline_options1} series={this.state.timeline_series1} type="rangeBar" height={300} />
+
+                    <div className="col-md-12">
+                      <ReactApexChart options={this.state.timeline_options1} series={this.state.timeline_series1} type="rangeBar" height={300} />
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div className="row">
+                <div className="col-1"></div>
+                <div className="col-5">
+                  <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
+                    <div className="card-header" style={{ backgroundColor: "#fa8804", border: true }} >
+                      <h3 className="card-title" style={
+                        {
+                          textAlign: "center",
+                          fontSize: "20px",
+                          // color: "#fa8804",
+                          fontWeight: "'bold'",
+                        }}> <i class="fas fa-exclamation-triangle"></i> 3 WORST ALARM-STOP</h3>
+                    </div>
+                    <div className="card-body">
+                      <table className="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>TOPIC</th>
+                            <th>TIME (HH:mm:ss)</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.renderTable()}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-5">
+                  <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
+                    <div className="card-header" style={{ backgroundColor: "#FFCCCC", border: true }} >
+                      <h3 className="card-title" style={
+                        {
+                          textAlign: "center",
+                          fontSize: "20px",
+                          color: "#FF0000",
+                          fontWeight: "'bold'",
+                        }}><i class="fas fa-exclamation-triangle"></i> 3 WORST STOP-ALARM</h3>
+                    </div>
+                    <div className="card-body">
+                      <table className="table table-bordered table-hover">
+                        <thead>
+                          <tr>
+                            <th>TOPIC</th>
+                            <th>TIME (HH:mm:ss)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.renderTable_stop()}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
 
             </div>
-            <div className="row">
-              <div className="col-1"></div>
-              <div className="col-5">
-                <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
-                  <div className="card-header" style={{ backgroundColor: "#fa8804", border: true }} >
-                    <h3 className="card-title" style={
-                      {
-                        textAlign: "center",
-                        fontSize: "20px",
-                        // color: "#fa8804",
-                        fontWeight: "'bold'",
-                      }}> <i class="fas fa-exclamation-triangle"></i> 3 WORST ALARM-STOP</h3>
-                  </div>
-                  <div className="card-body">
-                    <table className="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th>TOPIC</th>
-                          <th>TIME (HH:mm:ss)</th>
-
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.renderTable()}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <div className="col-5">
-                <div className="card" style={{ textAlign: "center", fontSize: "16px", }}>
-                  <div className="card-header" style={{ backgroundColor: "#FFCCCC", border: true }} >
-                    <h3 className="card-title" style={
-                      {
-                        textAlign: "center",
-                        fontSize: "20px",
-                        color: "#FF0000",
-                        fontWeight: "'bold'",
-                      }}><i class="fas fa-exclamation-triangle"></i> 3 WORST STOP-ALARM</h3>
-                  </div>
-                  <div className="card-body">
-                    <table className="table table-bordered table-hover">
-                      <thead>
-                        <tr>
-                          <th>TOPIC</th>
-                          <th>TIME (HH:mm:ss)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.renderTable_stop()}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
-    </div>
     );
   }
 }

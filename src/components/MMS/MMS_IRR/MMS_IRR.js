@@ -777,8 +777,8 @@ class MMS_IRR extends Component {
                       >
 
                         <option>All</option>
-                        <option>MAINTENANCE TURNING</option>
-                        <option>LINE TURNING</option>
+                        <option>MAINTENANCE</option>
+                        <option>PRODUCTION LINE</option>
 
                       </select>
 

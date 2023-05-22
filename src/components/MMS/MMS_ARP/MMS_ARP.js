@@ -33,8 +33,8 @@ class MMS_ARP extends Component {
         //date_start: moment().add(-0, "days").format("2023-01-13"),
       })
       console.log(mc_list_data.data.result);
-    } catch (error) {}
-  
+    } catch (error) { }
+
 
     setTimeout(
       function () {
@@ -286,19 +286,19 @@ class MMS_ARP extends Component {
           }, {
             name: "M922 TRANSFERE L/R NG",
             data: M922,
-          },{
+          }, {
             name: "M923 +NG EJECT FWD/BWD NG",
             data: M923,
-          },{
+          }, {
             name: "M924 -NG EJECT FWD/BWD NG",
             data: M924,
-          },{
+          }, {
             name: "M925 MEASURE EJECT DWN/UP NG",
             data: M925,
-          },{
+          }, {
             name: "M926 MEASURE WEIGHT FWD/BWD NG",
             data: M926,
-          },{
+          }, {
             name: "M927 SENSOR HEAD FWD/BWD NG",
             data: M927,
           },
@@ -358,9 +358,9 @@ class MMS_ARP extends Component {
         },
       });
 
-    } catch (error) {}
-  }; 
-  
+    } catch (error) { }
+  };
+
   alarm_time = async () => {
     let alarm = await httpClient.post(server.AlarmTopic_time_ARP, {
       date: this.state.date_start,
@@ -470,8 +470,8 @@ class MMS_ARP extends Component {
                       >
 
                         <option>All</option>
-                        <option>MAINTENANCE TURNING</option>
-                        <option>LINE TURNING</option>
+                        <option>MAINTENANCE</option>
+                        <option>PRODUCTION LINE</option>
 
                       </select>
 

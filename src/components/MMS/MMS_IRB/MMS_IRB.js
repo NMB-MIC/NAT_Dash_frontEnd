@@ -649,11 +649,11 @@ class MMS_IRB extends Component {
 
           { name: "CARRIER POSI.0 SET REQUEST", data: CARRIER_set_R }, { name: "TOTAL ADJ. LIMIT OVER", data: TTL_ADJ }, { name: "NEXT M/C CHUTE ERROR", data: MC_CERR },
           { name: "G.ZERO FAULT", data: zero_FAULT }, { name: "PLUG NG REPEAT COUNTER", data: P_NG_C }, { name: "OK1 TRAP SHUTTER ERROR", data: OK1_T_ERR },
-          { name: "OK2 TRAP SHUTTER ERROR", data: OK2_T_ERR }, { name: "(-)NG TRAP SHUTTER ERROR", data: NG_TS_ERRor }, { name: "(+)NG TRAP SHUTTER ERROR", data: NG_TS_ERR  },
-          { name: "SORTING NO WORK STOP", data: SNWS }, { name: "MODE AUTO ZERO OFF", data: MODE_AZ}, { name: "MODE NG WORK CHECK OFF", data: MODE_NG },
+          { name: "OK2 TRAP SHUTTER ERROR", data: OK2_T_ERR }, { name: "(-)NG TRAP SHUTTER ERROR", data: NG_TS_ERRor }, { name: "(+)NG TRAP SHUTTER ERROR", data: NG_TS_ERR },
+          { name: "SORTING NO WORK STOP", data: SNWS }, { name: "MODE AUTO ZERO OFF", data: MODE_AZ }, { name: "MODE NG WORK CHECK OFF", data: MODE_NG },
           { name: "WORK SEPARATE ERROR", data: WS_ERR }, { name: "LOADER WORK CHECK ERROR", data: LOADER_WERR }, { name: "WORK STOPPER ERROR", data: Work_ST },
           { name: "GRINDER CYCLE TIME OVER", data: GCTO }, { name: "RESET BY LOADING", data: RESET_L }
-          ],
+        ],
         timeline_options: {
           chart: {
             // background: '#EBEDEF',
@@ -817,9 +817,10 @@ class MMS_IRB extends Component {
                         }}
                       >
 
+
                         <option>All</option>
-                        <option>MAINTENANCE TURNING</option>
-                        <option>LINE TURNING</option>
+                        <option>MAINTENANCE</option>
+                        <option>PRODUCTION LINE</option>
 
                       </select>
 

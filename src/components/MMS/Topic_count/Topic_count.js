@@ -43,8 +43,8 @@ class Topic_count extends Component {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     await this.setState({
-      date_start: moment("2023-03-01").format("YYYY-MM-DD"),
-      date_end: moment("2023-03-03").add(-0, "days").format("YYYY-MM-DD"),
+      date_start: moment(firstDay).format("YYYY-MM-DD"),
+      date_end: moment().add(-0, "days").format("YYYY-MM-DD"),
     });
 
   }
@@ -52,7 +52,7 @@ class Topic_count extends Component {
     try {
       if (this.state.list_machine !== null) {
         const myResult = this.state.list_machine;
-        return myResult.map((item) => <option>{item.mc_name}</option>);
+        return myResult.map((item) => <option>{item.mc_no}</option>);
       }
     } catch (error) { }
   };
@@ -97,12 +97,20 @@ class Topic_count extends Component {
         my_serie.push({ name: result.data.result[i].topic, data: result.data.result[i].count.split(",") })
 
       }
-console.log(my_serie);
+  console.log(my_serie);
 
       this.setState({
         series: my_serie,
 
         options: {
+          title: {
+            text: "MMS",
+            align: 'center',
+            style: {
+              fontSize: '30px',
+              fontWeight: 'bold',
+            }
+          },
           chart: {
             type: 'bar',
             height:500,
@@ -177,7 +185,7 @@ console.log(my_serie);
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-12">
-              <div className="card card-success color-palette-box">
+              <div className="card card-primary color-palette-box">
                 <div className="card-header">
                   <h2 className="card-title">
                     <i className="fas fa-chart-bar" />
@@ -251,8 +259,8 @@ console.log(my_serie);
                               }} value={this.state.responsible}
                             >
                               <option> All </option>
-                              <option> LINE TURNING </option>
-                              <option> MAINTENANCE TURNING </option>
+                              <option> PRODUCTION LINE </option>
+                              <option> MAINTENANCE</option>
                             </select>
                           </div>
                         </div>

@@ -182,7 +182,7 @@ class MMS_AVS extends Component {
       console.log(mc_data.data.result);
       var M610 = [], M623 = [], M600 = [], M601 = [], M602 = [], M603 = [], M605 = [], M606 = [], M607 = []
       var M611 = [], M615 = [], M620 = [], M621 = [], M622 = [], M625 = [], M626 = [], M630 = [], M640 = []
-      var M641 = [], M642=[],M643 = [], M650 = [], M651 = [], M652 = [], M653 = [], M654 = [], M655 = [], M657 = []
+      var M641 = [], M642 = [], M643 = [], M650 = [], M651 = [], M652 = [], M653 = [], M654 = [], M655 = [], M657 = []
 
       for (let index = 0; index < mc_data.data.result.length; index++) {
         switch (mc_data.data.result[index].topic) {
@@ -277,36 +277,36 @@ class MMS_AVS extends Component {
       }
       await this.setState({
         timeline_series: [
-          {name: "M610 AIR PRESSURE ",data: M610,}, 
-          {name: "M623 CAMERA ERROR",data: M623,},
-          {name: "M600 NO-WORK ", data: M600,},
-          {name: "M601 FULL PARTS COUNTER",data: M601,},
-          {name: "M602 NG1 TRAY FULL",data: M602,},
-          {name: "M603 NG2 TRAY FULL",data: M603,},
-          {name: "M605 TRAY DOOR OPEN",data: M605,},
-          {name: "M606 TRAY CHANGER FULL WORK STOP",data: M606,},
-          {name: "M607 FULL LOT",data: M607,},
-          {name: "M611 EMERGENCY STOP",data: M611,},
-          {name: "M615 FULL TRAY COUNTER",data: M615,},
-          {name: "M620 ENTRANCE CYCLE OVER",data: M620,},
-          {name: "M621 TR FWD/BWD CYCLE OVER",data: M621,},
-          {name: "M622 TR FEED/HOME CYCLE OVER",data: M622,},
-          {name: "M625 NG CONTINUE CAMERA 1",data: M625,},
-          {name: "M626 NG CONTINUE CAMERA 2",data: M626,},
-          {name: "M640 NG EJECT CYCLE OVER",data: M640,},
-          {name: "M630 T/O CYCLE OVER",data: M630,},
-          {name: "M641 NG EJECT PASS MISS",data: M641,},
-          {name: "M642 OK PUSHER ALARM",data: M642,},
-          {name: "M643 NG ROBO ALARM",data: M643,},
-          {name: "M650 TRAY LIFTER MOTOR ALARM",data: M650,},
-          {name: "M651 TRAY AREA SENSOR ALARM",data: M651,},
-          {name: "M652 TRAY CV PUSHER ALARM",data: M652,},
-          {name: "M653 TRAY CV SHUTTER ALARM",data: M653,},
-          {name: "M654 TRAY CHANGER CYCLE OVER",data: M654,},
-          {name: "M655 NO TRAY ALARM",data: M655,},
-          {name: "M657 TRAY LOCK CYL LS ALARM",data: M657,},
+          { name: "M610 AIR PRESSURE ", data: M610, },
+          { name: "M623 CAMERA ERROR", data: M623, },
+          { name: "M600 NO-WORK ", data: M600, },
+          { name: "M601 FULL PARTS COUNTER", data: M601, },
+          { name: "M602 NG1 TRAY FULL", data: M602, },
+          { name: "M603 NG2 TRAY FULL", data: M603, },
+          { name: "M605 TRAY DOOR OPEN", data: M605, },
+          { name: "M606 TRAY CHANGER FULL WORK STOP", data: M606, },
+          { name: "M607 FULL LOT", data: M607, },
+          { name: "M611 EMERGENCY STOP", data: M611, },
+          { name: "M615 FULL TRAY COUNTER", data: M615, },
+          { name: "M620 ENTRANCE CYCLE OVER", data: M620, },
+          { name: "M621 TR FWD/BWD CYCLE OVER", data: M621, },
+          { name: "M622 TR FEED/HOME CYCLE OVER", data: M622, },
+          { name: "M625 NG CONTINUE CAMERA 1", data: M625, },
+          { name: "M626 NG CONTINUE CAMERA 2", data: M626, },
+          { name: "M640 NG EJECT CYCLE OVER", data: M640, },
+          { name: "M630 T/O CYCLE OVER", data: M630, },
+          { name: "M641 NG EJECT PASS MISS", data: M641, },
+          { name: "M642 OK PUSHER ALARM", data: M642, },
+          { name: "M643 NG ROBO ALARM", data: M643, },
+          { name: "M650 TRAY LIFTER MOTOR ALARM", data: M650, },
+          { name: "M651 TRAY AREA SENSOR ALARM", data: M651, },
+          { name: "M652 TRAY CV PUSHER ALARM", data: M652, },
+          { name: "M653 TRAY CV SHUTTER ALARM", data: M653, },
+          { name: "M654 TRAY CHANGER CYCLE OVER", data: M654, },
+          { name: "M655 NO TRAY ALARM", data: M655, },
+          { name: "M657 TRAY LOCK CYL LS ALARM", data: M657, },
         ],
-        timeline_options: {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+        timeline_options: {
           chart: {
             // background: '#EBEDEF',
             height: 250,
@@ -471,9 +471,8 @@ class MMS_AVS extends Component {
                     >
 
                       <option>All</option>
-                      <option>MAINTENANCE TURNING</option>
-                      <option>LINE TURNING</option>
-
+                      <option>MAINTENANCE</option>
+                      <option>PRODUCTION LINE</option>
                     </select>
 
                   </div>
